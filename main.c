@@ -38,7 +38,7 @@ void getFileChars(char* output, char filename[]) {
 		output[i] = fgetc(fptr);
 		printf("%c", output[i]);
 		i++;
-	} while (output[i-1] != '');
+	} while (output[i-1] != EOF);
 
 	fclose(fptr);
 }
@@ -56,7 +56,7 @@ int main() {
 	getFileStrings(stop, 20, "stopwords.txt");
 	getFileChars(special, "specialcharacters.txt");
 
-	while (special[i] != '\0') {
+	while (special[i] != EOF) {
 		printf("%c", special[i]);
 		i++;
 	}
