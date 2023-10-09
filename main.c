@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+//Function to get strings from a file
 void getFileStrings(char output[][20], int size, char filename[]) {
 	//declaring variables
 	int i = 0;
@@ -21,6 +22,7 @@ void getFileStrings(char output[][20], int size, char filename[]) {
 	fclose(fptr);
 }
 
+//Function to get characters from a file
 void getFileChars(char* output, char filename[]) {
 	//declaring variables
 	int i = 0;
@@ -43,6 +45,7 @@ void getFileChars(char* output, char filename[]) {
 	fclose(fptr);
 }
 
+//Main function
 int main() {
 	//declaring variables
 	char d1[200][20], d2[200][20], d3[200][20], d4[200][20], stop[700][20], special[1000];
@@ -56,9 +59,5 @@ int main() {
 	getFileStrings(stop, 20, "stopwords.txt");
 	getFileChars(special, "specialcharacters.txt");
 
-	while (special[i] != EOF) {
-		printf("%c", special[i]);
-		i++;
-	}
 	return 0;
 }
