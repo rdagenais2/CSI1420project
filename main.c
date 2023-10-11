@@ -38,7 +38,6 @@ void getFileChars(char* output, char filename[]) {
 	//getting data from file
 	do {
 		output[i] = fgetc(fptr);
-		printf("%c", output[i]);
 		i++;
 	} while (output[i-1] != EOF);
 
