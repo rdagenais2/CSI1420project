@@ -44,6 +44,7 @@ void getFileChars(char* output, char filename[]) {
 	fclose(fptr);
 }
 
+
 //Main function
 int main() {
 	//declaring variables
@@ -57,6 +58,9 @@ int main() {
 	getFileStrings(d4, 20, "d4.txt");
 	getFileStrings(stop, 20, "stopwords.txt");
 	getFileChars(special, "specialcharacters.txt");
-
+	
+	for (int i =0; i<=200; i++){
+	printf("%c", d1[i][i]);
+	}
 	return 0;
 }
