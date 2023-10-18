@@ -17,7 +17,7 @@ void getFileStrings(char output[][20], int size, char filename[]) {
 	do {
 		fgets(output[i], size, fptr);
 		i++;
-	} while (output[i-1][0] != '\0');
+	} while (output[i - 1][0] != '\0');
 
 	fclose(fptr);
 }
@@ -47,7 +47,7 @@ void getFileChars(char* output, char filename[]) {
 //Main function
 int main() {
 	//declaring variables
-	char d1[200][20], d2[200][20], d3[200][20], d4[200][20], stop[700][20], special[1000];
+	char d1[200][20], d2[200][20], d3[200][20], d4[200][20], stop[700][20], special[100];
 	int i = 0;
 
 	//getting file contents and putting them into arrays
@@ -57,6 +57,9 @@ int main() {
 	getFileStrings(d4, 20, "d4.txt");
 	getFileStrings(stop, 20, "stopwords.txt");
 	getFileChars(special, "specialcharacters.txt");
-
-	return 0;
+	
+	for (i = 0; d1[i][0] != '\0'; i++) {
+		printf("%s", d1[i]);
+	} 
+	
 }
