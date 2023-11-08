@@ -19,8 +19,8 @@ void getFileStrings(char output[][20], int size, char filename[]) {
 	do {
 		fgets(output[i], size, fptr);
 		i++;
-	} while (output[i-1][0] != '\0');
-	
+	} while (output[i - 1][0] != '\0');
+
 	fclose(fptr);
 }
 
@@ -72,7 +72,7 @@ void alphabetize (char help[][20]){
 //Main function
 int main() {
 	//declaring variables
-	char d1[200][20], d2[200][20], d3[200][20], d4[200][20], stop[700][20], special[1000];
+	char d1[200][20], d2[200][20], d3[200][20], d4[200][20], stop[700][20], special[100];
 	int i = 0;
 
 	//getting file contents and putting them into arrays
