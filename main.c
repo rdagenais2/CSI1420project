@@ -3,7 +3,7 @@
 #include <ctype.h>
 
 //Function to get strings from a file
-void getFileStrings(char output[][20], int size, char filename[]) {
+void getFileStrings(char output[][21], int size, char filename[]) {
 	//declaring variables
 	int i = 0;
 
@@ -47,7 +47,7 @@ void getFileChars(char* output, char filename[]) {
 }
 
 //Function to alphabetize the arrays
-void alphabetize (char arr[][20]){
+void alphabetize (char arr[][21]){
 	//declaring variables
 	char swap[20]; 
 	int n, x; 
@@ -73,7 +73,7 @@ void alphabetize (char arr[][20]){
 //Main function
 int main() {
 	//declaring variables
-	char d1[200][20], d2[200][20], d3[200][20], d4[200][20], stop[700][20], special[100];
+	char d1[201][21], d2[201][21], d3[201][21], d4[201][21], stop[901][21], special[101];
 	int i = 0;
 
 	//getting file contents and putting them into arrays
@@ -83,12 +83,13 @@ int main() {
 	getFileStrings(d4, 20, "d4.txt");
 	getFileStrings(stop, 20, "stopwords.txt");
 	getFileChars(special, "specialcharacters.txt");
-	 
+	
 	//alphabetizing d1-d4
 	alphabetize(d1); 
 	alphabetize(d2);
 	alphabetize(d3);
 	alphabetize(d4);
-
+	
+	
 	return 0;
 }
