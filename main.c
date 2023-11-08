@@ -46,26 +46,27 @@ void getFileChars(char* output, char filename[]) {
 	fclose(fptr);
 }
 
-void alphabetize (char help[][20]){
+//Function to alphabetize the arrays
+void alphabetize (char arr[][20]){
+	//declaring variables
 	char swap[20]; 
 	int n, x; 
 	
+	//set all letters to lowercase
 	for (int y = 0; y < 200; y++){
-			help[y][0] = tolower(help[y][0]);  
+			arr[y][0] = tolower(arr[y][0]);  
 	}
+
+	//sort words into alphabetical order
 	for (x=0; x < 200; x++){ 
 		for (n=x+1; n < 200; n++){ 
-			if (strcmp(help[x], help[n]) > 0){
-				memcpy(swap, help[x], 20);
-				memcpy(help[x], help[n], 20);
-				memcpy(help[n], swap, 20); 
+			if (strcmp(arr[x], arr[n]) > 0){
+				memcpy(swap, arr[x], 20);
+				memcpy(arr[x], arr[n], 20);
+				memcpy(arr[n], swap, 20); 
 			}
 		}
 	}
-	
-	for (n = 0; n < 200; n++){
-		printf("%s", help[n]); 
-	} 
 	
 }
 
@@ -83,10 +84,11 @@ int main() {
 	getFileStrings(stop, 20, "stopwords.txt");
 	getFileChars(special, "specialcharacters.txt");
 	 
-	 
+	//alphabetizing d1-d4
 	alphabetize(d1); 
 	alphabetize(d2);
 	alphabetize(d3);
 	alphabetize(d4);
+
 	return 0;
 }
