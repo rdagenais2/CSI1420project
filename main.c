@@ -83,9 +83,7 @@ void putFileStrings(char arr[][21] ,const char *output_filename) {
 	}
 	
     for (i = 0; i < 200; i++) { 
-        for (j = 0; j< 21; j++) {
-			fprintf(output_file, "%c", arr[i][j]);
-		}			
+		fputs(arr[i], output_file);
     } 
 
 	fclose(output_file);
