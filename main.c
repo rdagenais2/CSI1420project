@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
 
@@ -22,6 +23,7 @@ void getFileStrings(char output[][21], int size, char filename[]) {
 	} while (output[i - 1][0] != '\0');
 
 	fclose(fptr);
+	
 }
 
 //Function to get characters from a file
@@ -70,13 +72,35 @@ void alphabetize (char arr[][21]){
 	
 }
 
+//Function to read from txt files and put them in token files
+void putFileStrings(char arr[][21] ,const char *output_filename) {
+	FILE *output_file = fopen(output_filename, "w");
+	int i, j;
+	
+	if(output_file == NULL){
+		printf("Error opening the file: %s\n", output_filename);
+		return;
+	}
+	
+    for (i = 0; i < 200; i++) { 
+        for (j = 0; j< 21; j++) {
+			fprintf(output_file, "%c", arr[i][j]);
+		}			
+    } 
+
+	fclose(output_file);
+	
+}
+
+
 //Main function
 int main() {
+	printf("a");
 	//declaring variables
 	char d1[201][21], d2[201][21], d3[201][21], d4[201][21], stop[901][21], special[101];
 	int i = 0;
-
 	//getting file contents and putting them into arrays
+	
 	getFileStrings(d1, 20, "d1.txt");
 	getFileStrings(d2, 20, "d2.txt");
 	getFileStrings(d3, 20, "d3.txt");
@@ -90,6 +114,8 @@ int main() {
 	alphabetize(d3);
 	alphabetize(d4);
 	
+
+	putFileStrings(d1,"Tokenizedd1.txt");
 	
 	return 0;
 }
