@@ -6,7 +6,7 @@ to
 extend 
 the 
 student
-’
+'
 s 
 knowledge 
 of
@@ -97,7 +97,7 @@ kinds
 in
 a 
 computer
-’
+'
 s 
 internal 
 memory 
