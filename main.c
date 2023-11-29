@@ -106,6 +106,7 @@ void putFileStrings(char arr[][21] ,const char *output_filename) {
 	
 }
 
+//Function to remove chars from array of strings
 void removeChars(char from[][21], char removalList[], int fromSize, int removalSize) {
 	char empty[21];
 	for (int i = 0; i < fromSize; i++) {
@@ -117,6 +118,7 @@ void removeChars(char from[][21], char removalList[], int fromSize, int removalS
 	}
 }
 
+//Function to remove strings from array of strings
 void removeStrings(char from[][21], char removalList[][21], int fromSize, int removalSize) {
 	char empty[21];
 	for (int i = 0; i < fromSize; i++) {
@@ -128,6 +130,7 @@ void removeStrings(char from[][21], char removalList[][21], int fromSize, int re
 	}
 }
 
+//Calculates the frequency of each word in the documents
 void calculateFrequency(char input[][21], char outputWords[][21], int outputFrequency[], int size) {
 	int unique = 0;
 	memcpy(outputWords[0], input[0], 21);
@@ -146,6 +149,7 @@ void calculateFrequency(char input[][21], char outputWords[][21], int outputFreq
 
 }
 
+//Removes blank spaces from array
 void removeBlanks(char input[][21], int size) {
 	int newIndex = 0;
 	char empty[21];
@@ -160,6 +164,7 @@ void removeBlanks(char input[][21], int size) {
 	}
 }
 
+//Calculates the weight of each word in the document
 void calculateWeights(char words[][21], int frequencies[], double weights[], int size) {
 	double maxFrequency = 0;
 	for (int i = 0; i < size && words[i][0] != '\0'; i++) {
@@ -173,6 +178,7 @@ void calculateWeights(char words[][21], int frequencies[], double weights[], int
 	}
 }
 
+//Prints out the frequency and weight of the words
 void printData(char words[][21], int frequencies[], double weights[], char name[]) {
 	printf("Data for %s\n", name);
 	printf("Word\t\t|\t    Frequency\t\t|\t\tWeight\n");
