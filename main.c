@@ -2,9 +2,55 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include <stdbool.h>
+
+char empty[21];
+//function to get strings from file
+void getFileStrings(char output[][21], int size, int length, char filename[]) {
+	//declaring variables
+	char paragraph[length], temp[size];
+	int wordIndex, letterIndex;
+	bool special;
+	
+	//get file pointer
+	FILE* fptr = fopen(filename, "r");
+
+	//test if file opened successfully
+	if (fptr == NULL) {
+		printf("The file is not opened. The program will now exit.");
+	}
+
+	//get data from file
+	fgets(paragraph, length, fptr);
+
+	//seperate data into words and symbols
+	wordIndex = 0;
+	for (int i = 0; i < length; i++) {
+		if (paragraph[i] == ' ') {
+			memcpy(output[wordIndex], temp, size);
+			wordIndex++;
+			letterIndex = 0;
+			memcpy(temp, empty, size);
+		}
+		else if (!isalpha(paragraph[i])) {
+			memcpy(output[wordIndex], temp, size);
+			wordIndex++;
+			letterIndex = 0;
+			output[wordIndex][0] = paragraph[i];
+			wordIndex++;
+			memcpy(temp, empty, size);
+		}
+		else {
+			temp[letterIndex] = paragraph[i];
+			letterIndex++;
+		}
+	}
+
+	fclose(fptr);
+}
 
 //Function to get strings from a file
-void getFileStrings(char output[][21], int size, char filename[]) {
+void getListFileStrings(char output[][21], int size, char filename[]) {
 	//declaring variables
 	int i = 0;
 
@@ -108,7 +154,6 @@ void putFileStrings(char arr[][21] ,const char *output_filename) {
 
 //Function to remove chars from array of strings
 void removeChars(char from[][21], char removalList[], int fromSize, int removalSize) {
-	char empty[21];
 	for (int i = 0; i < fromSize; i++) {
 		for (int j = 0; j < removalSize; j++) {
 			if (from[i][0] == removalList[j]) {
@@ -120,7 +165,6 @@ void removeChars(char from[][21], char removalList[], int fromSize, int removalS
 
 //Function to remove strings from array of strings
 void removeStrings(char from[][21], char removalList[][21], int fromSize, int removalSize) {
-	char empty[21];
 	for (int i = 0; i < fromSize; i++) {
 		for (int j = 0; j < removalSize; j++) {
 			if (strcmp(from[i], removalList[j]) == 0) {
@@ -152,7 +196,6 @@ void calculateFrequency(char input[][21], char outputWords[][21], int outputFreq
 //Removes blank spaces from array
 void removeBlanks(char input[][21], int size) {
 	int newIndex = 0;
-	char empty[21];
 	for (int i = 0; i < size; i++) {
 		if (strcmp(input[i], empty) != 0) {
 			memcpy(input[newIndex], input[i], 21);
@@ -202,13 +245,13 @@ int main() {
 	double weights[4][201];
 	//getting file contents and putting them into arrays
 	
-	getFileStrings(d1, 20, "d1.txt");
-	getFileStrings(d2, 20, "d2.txt");
-	getFileStrings(d3, 20, "d3.txt");
-	getFileStrings(d4, 20, "d4.txt");
-	getFileStrings(stop, 20, "stopwords.txt");
+	getFileStrings(d1, 20, 1200, "d1.txt");
+	getFileStrings(d2, 20, 1200, "d2.txt");
+	getFileStrings(d3, 20, 1200, "d3.txt");
+	getFileStrings(d4, 20, 1200, "d4.txt");
+	getListFileStrings(stop, 20, "stopwords.txt");
 	getFileChars(special, "specialcharacters.txt");
-	
+
 	//alphabetizing d1-d4
 	
 	alphabetize(d1, 200); 
@@ -216,7 +259,6 @@ int main() {
 	alphabetize(d3, 200);
 	alphabetize(d4, 200);
 
-	
 	removeChars(d1, special, 200, 100);
 	removeChars(d2, special, 200, 100);
 	removeChars(d3, special, 200, 100);
@@ -231,7 +273,7 @@ int main() {
 	removeBlanks(d2, 200);
 	removeBlanks(d3, 200);
 	removeBlanks(d4, 200);
-	
+
 	putFileStrings(d1, "Tokenizedd1.txt");
 	putFileStrings(d2, "Tokenizedd2.txt");
 	putFileStrings(d3, "Tokenizedd3.txt");
